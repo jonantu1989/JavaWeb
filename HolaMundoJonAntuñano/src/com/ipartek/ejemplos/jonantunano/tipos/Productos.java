@@ -81,7 +81,7 @@ public class Productos {
 		return descripcion;
 	}
 
-	public double getPrecio() {
+	public int getPrecio() {
 		return precio;
 	}
 
