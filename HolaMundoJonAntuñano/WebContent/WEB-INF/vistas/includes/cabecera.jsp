@@ -10,7 +10,7 @@
 <body>
 	<header>
 		<h1>Ejemplo MVC</h1>
-		<p>Ejemplos de uso de MVC con diferentes técnicas</p>
+		<p>Tienda</p>
 	</header>
 	<nav>
 		<ul>
