@@ -9,7 +9,7 @@
 </head>
 <body>
 	<header>
-		<h1>Ejemplo MVC</h1>
+		<h1>TIENDA</h1>
 		<p>Tienda</p>
 	</header>
 	<nav>
