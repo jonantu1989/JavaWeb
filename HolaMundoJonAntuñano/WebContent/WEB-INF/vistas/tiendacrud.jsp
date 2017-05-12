@@ -29,6 +29,8 @@
 				<td><img  src="C:\JAVA\imagenes/naranja.jpg" width=60 height=40></td>
 				
 				
+				
+				
 			</tr>
 			
 		</c:forEach>
