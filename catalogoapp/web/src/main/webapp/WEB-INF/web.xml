@@ -1,0 +1,87 @@
+<!DOCTYPE web-app PUBLIC
+ "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+ "http://java.sun.com/dtd/web-app_2_3.dtd" >
+
+<web-app>
+  <display-name>Archetype Created Web Application</display-name>
+  <servlet>
+  	<servlet-name>CatalogoAppServlet</servlet-name>
+  	<display-name>CatalogoAppServlet</display-name>
+  	<description></description>
+  	<servlet-class>com.ipartek.formacion.catalogoapp.web.CatalogoAppServlet</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>CatalogoServlet</servlet-name>
+  	<display-name>CatalogoServlet</display-name>
+  	<description></description>
+  	<servlet-class>com.ipartek.formacion.catalogoapp.web.CatalogoServlet</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>LoginCatalogoAppServlet</servlet-name>
+  	<display-name>LoginCatalogoAppServlet</display-name>
+  	<description></description>
+  	<servlet-class>com.ipartek.formacion.catalogoapp.web.LoginCatalogoAppServlet</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>AltaCatalogoAppServlet</servlet-name>
+  	<display-name>AltaCatalogoAppServlet</display-name>
+  	<description></description>
+  	<servlet-class>com.ipartek.formacion.catalogoapp.web.AltaCatalogoAppServlet</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>UsuarioCatalogoAppCrudServlet</servlet-name>
+  	<display-name>UsuarioCatalogoAppCrudServlet</display-name>
+  	<description></description>
+  	<servlet-class>com.ipartek.formacion.catalogoapp.web.UsuarioCatalogoAppCrudServlet</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>TiendaCatalogoAppCrudServlet</servlet-name>
+  	<display-name>TiendaCatalogoAppCrudServlet</display-name>
+  	<description></description>
+  	<servlet-class>com.ipartek.formacion.catalogoapp.web.TiendaCatalogoAppCrudServlet</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>UsuarioCatalogoAppFormServlet</servlet-name>
+  	<display-name>UsuarioCatalogoAppFormServlet</display-name>
+  	<description></description>
+  	<servlet-class>com.ipartek.formacion.catalogoapp.web.UsuarioCatalogoAppFormServlet</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>TiendaCatalogoAppFormServlet</servlet-name>
+  	<display-name>TiendaCatalogoAppFormServlet</display-name>
+  	<description></description>
+  	<servlet-class>com.ipartek.formacion.catalogoapp.web.TiendaCatalogoAppFormServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>CatalogoAppServlet</servlet-name>
+  	<url-pattern>/Catalogo</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>CatalogoServlet</servlet-name>
+  	<url-pattern>/catalogo</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>LoginCatalogoAppServlet</servlet-name>
+  	<url-pattern>/logincatalogo</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>AltaCatalogoAppServlet</servlet-name>
+  	<url-pattern>/altacatalogo</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>UsuarioCatalogoAppCrudServlet</servlet-name>
+  	<url-pattern>/usuariocatalogo</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>TiendaCatalogoAppCrudServlet</servlet-name>
+  	<url-pattern>/tiendacatalogo</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>UsuarioCatalogoAppFormServlet</servlet-name>
+  	<url-pattern>/usuariocatalogoform</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>TiendaCatalogoAppFormServlet</servlet-name>
+  	<url-pattern>/tiendacatalogoform</url-pattern>
+  </servlet-mapping>
+</web-app>
