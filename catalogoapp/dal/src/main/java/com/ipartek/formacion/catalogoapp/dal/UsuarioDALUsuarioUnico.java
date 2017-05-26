@@ -7,7 +7,7 @@ public class UsuarioDALUsuarioUnico implements UsuarioDAL {
 	private Usuario usuario;
 
 	public void alta(Usuario usuario) {
-		if (this.usuario.getNombre().equals(usuario.getNombre()))
+		if (usuario == null)
 			throw new DALException("Ya existe un usuario con ese nombre: "
 					+ usuario);
 
