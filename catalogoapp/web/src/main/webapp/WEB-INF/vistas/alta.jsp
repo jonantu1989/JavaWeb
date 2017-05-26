@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Login</title>
+<title>Alta</title>
 </head>
 <body>
 	<form action="altacatalogo" method="get">
@@ -23,6 +23,7 @@
 		<fieldset>
 			<input type="submit" value="Alta" />
 		</fieldset>
+		<a href="logincatalogo">LOGIN</a>
 			
 	</form>
 </body>

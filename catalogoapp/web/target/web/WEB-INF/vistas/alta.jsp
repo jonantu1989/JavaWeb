@@ -23,6 +23,7 @@
 		<fieldset>
 			<input type="submit" value="Alta" />
 		</fieldset>
+		<a href="logincatalogo">LOGIN</a>
 			
 	</form>
 </body>
