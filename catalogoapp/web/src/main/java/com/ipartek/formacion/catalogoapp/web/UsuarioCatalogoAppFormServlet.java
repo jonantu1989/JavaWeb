@@ -36,8 +36,8 @@ public class UsuarioCatalogoAppFormServlet extends HttpServlet {
 
 		if (op == null) {
 			request.getRequestDispatcher(
-					UsuarioCatalogoAppCrudServlet.RUTA_LISTADO).forward(
-					request, response);
+					TiendaCatalogoAppCrudServlet.RUTA_LISTADO).forward(request,
+					response);
 			return;
 		}
 
@@ -53,7 +53,7 @@ public class UsuarioCatalogoAppFormServlet extends HttpServlet {
 				usuario.setErrores("Las contraseñas no coinciden");
 				request.setAttribute("usuario", usuario);
 				request.getRequestDispatcher(
-						UsuarioCatalogoAppCrudServlet.RUTA_FORMULARIO).forward(
+						TiendaCatalogoAppCrudServlet.RUTA_FORMULARIO).forward(
 						request, response);
 			}
 		case "modificar":
@@ -64,7 +64,7 @@ public class UsuarioCatalogoAppFormServlet extends HttpServlet {
 
 				}
 				request.getRequestDispatcher(
-						UsuarioCatalogoAppCrudServlet.RUTA_LISTADO).forward(
+						TiendaCatalogoAppCrudServlet.RUTA_LISTADO).forward(
 						request, response);
 			}
 		}
