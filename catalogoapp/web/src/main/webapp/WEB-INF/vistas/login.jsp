@@ -7,7 +7,7 @@
 <title>Login</title>
 </head>
 <body>
-	<form action="logincatalogo" method="get">
+	<form action="logincatalogo" method="post">
 		<fieldset> <!-- Esto es un cuadro de texto para nombre -->
 			<label for="nombre">Nombre</label>
 			<input id="nombre" name="nombre" />
