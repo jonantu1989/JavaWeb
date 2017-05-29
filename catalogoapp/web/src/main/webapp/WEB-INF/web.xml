@@ -38,26 +38,26 @@
 
   <servlet-mapping>
   	<servlet-name>LoginCatalogoAppServlet</servlet-name>
-  	<url-pattern>/logincatalogo</url-pattern>
+  	<url-pattern>/login</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
   	<servlet-name>AltaCatalogoAppServlet</servlet-name>
-  	<url-pattern>/altacatalogo</url-pattern>
+  	<url-pattern>/alta</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
   	<servlet-name>UsuarioCatalogoAppCrudServlet</servlet-name>
-  	<url-pattern>/usuariocatalogo</url-pattern>
+  	<url-pattern>/usuario</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
   	<servlet-name>TiendaCatalogoAppCrudServlet</servlet-name>
-  	<url-pattern>/tiendacatalogo</url-pattern>
+  	<url-pattern>/tienda</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
   	<servlet-name>UsuarioCatalogoAppFormServlet</servlet-name>
-  	<url-pattern>/usuariocatalogoform</url-pattern>
+  	<url-pattern>/usuarioform</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
   	<servlet-name>TiendaCatalogoAppFormServlet</servlet-name>
-  	<url-pattern>/tiendacatalogoform</url-pattern>
+  	<url-pattern>/tiendaform</url-pattern>
   </servlet-mapping>
 </web-app>
