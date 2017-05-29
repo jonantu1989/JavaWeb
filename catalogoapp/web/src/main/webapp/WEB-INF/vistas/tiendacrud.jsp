@@ -12,7 +12,7 @@
 			<th>Nombre</th>
 			<th>Descripcion</th>
 			<th>Precio</th>
-			<th>Imagen</th>
+			
 		</tr>
 	</thead>
 	<tbody>
@@ -26,7 +26,7 @@
 				<td>${producto.nombre}</td>
 				<td>${producto.descripcion}</td>
 				<td>${producto.precio}</td>
-				<td><img  src="C:\JAVA\imagenes/naranja.jpg" width=60 height=40></td>
+				
 				
 				
 				

@@ -37,13 +37,13 @@ public class UsuarioDALUsuarioUnico implements UsuarioDAL {
 
 	@Override
 	public Usuario buscarPorID(String id) {
-		// TODO Auto-generated method stub
+
 		return null;
 	}
 
 	@Override
 	public Usuario[] buscarTodosLosUsuarios() {
-		// TODO Auto-generated method stub
+
 		return null;
 	}
 
