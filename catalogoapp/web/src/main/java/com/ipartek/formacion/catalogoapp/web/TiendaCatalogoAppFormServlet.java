@@ -35,30 +35,23 @@ public class TiendaCatalogoAppFormServlet extends HttpServlet {
 
 		RequestDispatcher rutaFormulario = request
 				.getRequestDispatcher(TiendaCatalogoAppCrudServlet.RUTA_FORMULARIO);
-
 		if (op == null) {
 			rutaListado.forward(request, response);
 			return;
 		}
-
 		Productos productos = new Productos(id, nombre, descripcion, precio);
 		ServletContext application = request.getServletContext();
 		ProductosDAL dal = (ProductosDAL) application.getAttribute("dal");
-
 		switch (op) {
 		case "alta":
-			if (id.equals(id)) {
-
+			if (id != null) {
 				dal.alta(productos);
-
 				rutaListado.forward(request, response);
-
 			} else {
 				productos.setErrores("Los id coinciden");
 				request.setAttribute("productos", productos);
 				rutaFormulario.forward(request, response);
 			}
-
 		case "modificar":
 			if (id.equals(id)) {
 				try {
@@ -66,27 +59,20 @@ public class TiendaCatalogoAppFormServlet extends HttpServlet {
 				} catch (DALException de) {
 					productos.setErrores(de.getMessage());
 					request.setAttribute("productos", productos);
-
 					rutaFormulario.forward(request, response);
-
 					return;
 				}
-
 				rutaListado.forward(request, response);
-
+				return;
 			} else {
 				productos.setErrores("El producto no existe");
 				request.setAttribute("productos", productos);
-
 				rutaFormulario.forward(request, response);
 			}
-
 			break;
 		case "borrar":
 			dal.borrar(productos);
-
 			rutaListado.forward(request, response);
-
 			break;
 		}
 	}

@@ -40,11 +40,9 @@ public class UsuarioCatalogoAppFormServlet extends HttpServlet {
 					response);
 			return;
 		}
-
 		Usuario usuario = new Usuario(nombre, pass);
 		ServletContext application = request.getServletContext();
 		UsuarioDAL dal = (UsuarioDAL) application.getAttribute("dal");
-
 		switch (op) {
 		case "alta":
 			if (pass.equals(pass2)) {

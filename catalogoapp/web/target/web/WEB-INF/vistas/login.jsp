@@ -7,7 +7,7 @@
 <title>Login</title>
 </head>
 <body>
-	<form action="logincatalogo" method="post">
+	<form action="login" method="post">
 		<fieldset> <!-- Esto es un cuadro de texto para nombre -->
 			<label for="nombre">Nombre</label>
 			<input id="nombre" name="nombre" />
@@ -20,7 +20,7 @@
 			<input type="submit" value="Login" />
 		</fieldset>
 		<a href="alta">ALTA</a>
-		<a href="usuario">TIENDA</a>
+		<a href="tienda">TIENDA</a>
 		
 			
 	</form>

@@ -17,7 +17,7 @@ public class LoginCatalogoAppServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	public static final String RUTA = "/WEB-INF/vistas/";
-	private static final String RUTA_PRINCIPAL = RUTA + "principal.jsp";
+	private static final String RUTA_PRINCIPAL = RUTA + "tiendacrud.jsp";
 	private static final String RUTA_LOGIN = RUTA + "login.jsp";
 
 	private static final int TIEMPO_INACTIVIDAD = 30 * 60;

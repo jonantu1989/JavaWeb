@@ -18,7 +18,7 @@ public class AltaCatalogoAppServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/* package */static final String RUTA_ALTA = LoginCatalogoAppServlet.RUTA
-			+ "login.jsp";
+			+ "alta.jsp";
 
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
