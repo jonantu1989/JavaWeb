@@ -7,7 +7,7 @@
 <title>Alta</title>
 </head>
 <body>
-	<form action="altacatalogo" method="get">
+	<form action="altacatalogo" method="post">
 		<fieldset> <!-- Esto es un cuadro de texto para nombre -->
 			<label for="nombre">Nombre</label>
 			<input id="nombre" name="nombre" />

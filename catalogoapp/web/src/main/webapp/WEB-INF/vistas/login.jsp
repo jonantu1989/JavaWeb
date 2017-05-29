@@ -19,8 +19,8 @@
 		<fieldset>
 			<input type="submit" value="Login" />
 		</fieldset>
-		<a href="altacatalogo">ALTA</a>
-		<a href="usuariocatalogo">TIENDA</a>
+		<a href="alta">ALTA</a>
+		<a href="usuario">TIENDA</a>
 		
 			
 	</form>

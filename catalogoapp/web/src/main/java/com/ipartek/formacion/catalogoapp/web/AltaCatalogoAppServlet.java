@@ -4,7 +4,6 @@ import java.io.IOException;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -13,14 +12,13 @@ import com.ipartek.formacion.catalogoapp.dal.UsuarioDAL;
 import com.ipartek.formacion.catalogoapp.dal.UsuarioDALUsuarioUnico;
 import com.ipartek.formacion.catalogoapp.tipos.Usuario;
 
-@WebServlet("/altacatalogo")
 public class AltaCatalogoAppServlet extends HttpServlet {
 	/* package */static final String USUARIOS_DAL = "usuarioDAL";
 
 	private static final long serialVersionUID = 1L;
 
 	/* package */static final String RUTA_ALTA = LoginCatalogoAppServlet.RUTA
-			+ "alta.jsp";
+			+ "login.jsp";
 
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {

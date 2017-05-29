@@ -26,6 +26,6 @@
 	</tbody>
 </table>
 
-<a href="tiendacatalogo">CATALOGO</a>
+<a href="tienda">CATALOGO</a>
 
 <%@ include file="includes/pie.jsp"%>
