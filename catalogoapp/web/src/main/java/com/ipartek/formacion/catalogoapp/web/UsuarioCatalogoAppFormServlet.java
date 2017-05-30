@@ -36,8 +36,8 @@ public class UsuarioCatalogoAppFormServlet extends HttpServlet {
 
 		if (op == null) {
 			request.getRequestDispatcher(
-					TiendaCatalogoAppCrudServlet.RUTA_LISTADO).forward(request,
-					response);
+					UsuarioCatalogoAppCrudServlet.RUTA_LISTADO).forward(
+					request, response);
 			return;
 		}
 		Usuario usuario = new Usuario(nombre, pass);
@@ -45,24 +45,24 @@ public class UsuarioCatalogoAppFormServlet extends HttpServlet {
 		UsuarioDAL dal = (UsuarioDAL) application.getAttribute("dal");
 		switch (op) {
 		case "alta":
-			if (pass.equals(pass2)) {
+			if (pass == pass2) {
 				dal.alta(usuario);
 			} else {
 				usuario.setErrores("Las contraseñas no coinciden");
 				request.setAttribute("usuario", usuario);
 				request.getRequestDispatcher(
-						TiendaCatalogoAppCrudServlet.RUTA_FORMULARIO).forward(
+						UsuarioCatalogoAppCrudServlet.RUTA_FORMULARIO).forward(
 						request, response);
 			}
 		case "modificar":
-			if (pass.equals(pass2)) {
+			if (pass == pass2) {
 				try {
 					dal.modificar(usuario);
 				} catch (DALException de) {
 
 				}
 				request.getRequestDispatcher(
-						TiendaCatalogoAppCrudServlet.RUTA_LISTADO).forward(
+						UsuarioCatalogoAppCrudServlet.RUTA_LISTADO).forward(
 						request, response);
 			}
 		}

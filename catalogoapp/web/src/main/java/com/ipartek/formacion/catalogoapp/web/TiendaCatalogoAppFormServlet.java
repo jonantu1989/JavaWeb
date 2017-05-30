@@ -47,10 +47,12 @@ public class TiendaCatalogoAppFormServlet extends HttpServlet {
 			if (id != null) {
 				dal.alta(productos);
 				rutaListado.forward(request, response);
+				return;
 			} else {
 				productos.setErrores("Los id coinciden");
 				request.setAttribute("productos", productos);
 				rutaFormulario.forward(request, response);
+				return;
 			}
 		case "modificar":
 			if (id.equals(id)) {
@@ -73,7 +75,7 @@ public class TiendaCatalogoAppFormServlet extends HttpServlet {
 		case "borrar":
 			dal.borrar(productos);
 			rutaListado.forward(request, response);
-			break;
+			return;
 		}
 	}
 

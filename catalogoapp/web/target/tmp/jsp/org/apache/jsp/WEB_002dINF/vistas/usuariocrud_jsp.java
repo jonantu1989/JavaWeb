@@ -4,12 +4,18 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.jsp.*;
 
-public final class catalogo_jsp extends org.apache.jasper.runtime.HttpJspBase
+public final class usuariocrud_jsp extends org.apache.jasper.runtime.HttpJspBase
     implements org.apache.jasper.runtime.JspSourceDependent {
 
   private static final JspFactory _jspxFactory = JspFactory.getDefaultFactory();
 
   private static java.util.List<String> _jspx_dependants;
+
+  static {
+    _jspx_dependants = new java.util.ArrayList<String>(2);
+    _jspx_dependants.add("/WEB-INF/vistas/includes/cabecera.jsp");
+    _jspx_dependants.add("/WEB-INF/vistas/includes/pie.jsp");
+  }
 
   private org.apache.jasper.runtime.TagHandlerPool _jspx_tagPool_c_forEach_var_items;
 
@@ -52,24 +58,37 @@ public final class catalogo_jsp extends org.apache.jasper.runtime.HttpJspBase
       _jspx_resourceInjector = (org.glassfish.jsp.api.ResourceInjector) application.getAttribute("com.sun.appserv.jsp.resource.injector");
 
       out.write("\r\n");
-      out.write("<!DOCTYPE html PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\" \"http://www.w3.org/TR/html4/loose.dtd\">\r\n");
+      out.write("<!DOCTYPE html>\r\n");
       out.write("<html>\r\n");
       out.write("<head>\r\n");
-      out.write("<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\r\n");
-      out.write("<title>Catalogo</title>\r\n");
+      out.write("<meta charset=\"UTF-8\" />\r\n");
+      out.write("<title>Ejemplo MVC</title>\r\n");
+      out.write("<link rel=\"stylesheet\" href=\"css/estilos.css\" />\r\n");
       out.write("</head>\r\n");
       out.write("<body>\r\n");
+      out.write("\t<header>\r\n");
+      out.write("\t\t<h1>TIENDA</h1>\r\n");
+      out.write("\t\t<p>Tienda</p>\r\n");
+      out.write("\t</header>\r\n");
+      out.write("\t<nav>\r\n");
+      out.write("\t\t<ul>\r\n");
+      out.write("\t\t\t<li><a href=\"login\">Login</a></li>\r\n");
+      out.write("\t\t\t<li><a href=\"alta\">Alta</a></li>\r\n");
+      out.write("\t\t\t<li><a href=\"login?opcion=logout\">Salir</a></li>\r\n");
+      out.write("\t\t</ul>\r\n");
+      out.write("\t</nav>");
       out.write("\r\n");
-      out.write("<h1>CATALOGO</h1>\r\n");
+      out.write("\r\n");
+      out.write("\r\n");
+      out.write("\r\n");
+      out.write("<h2>Mantenimiento de usuarios</h2>\r\n");
+      out.write("\r\n");
       out.write("<table border=\"1\">\r\n");
       out.write("\t<thead>\r\n");
       out.write("\t\t<tr>\r\n");
-      out.write("\t\t\t\r\n");
-      out.write("\t\t\t<th>ID producto</th>\r\n");
-      out.write("\t\t\t<th>Nombre</th>\r\n");
-      out.write("\t\t\t<th>Descripcion</th>\r\n");
-      out.write("\t\t\t<th>Precio</th>\r\n");
-      out.write("\t\t\t\r\n");
+      out.write("\t\t\t<th>Operaciones</th>\r\n");
+      out.write("\t\t\t<th>Usuario</th>\r\n");
+      out.write("\t\t\t<th>Contraseña</th>\r\n");
       out.write("\t\t</tr>\r\n");
       out.write("\t</thead>\r\n");
       out.write("\t<tbody>\r\n");
@@ -77,9 +96,15 @@ public final class catalogo_jsp extends org.apache.jasper.runtime.HttpJspBase
       if (_jspx_meth_c_forEach_0(_jspx_page_context))
         return;
       out.write("\r\n");
-      out.write("\t\t\t\t\r\n");
       out.write("\t</tbody>\r\n");
       out.write("</table>\r\n");
+      out.write("\r\n");
+      out.write("<a href=\"tienda\">CATALOGO</a>\r\n");
+      out.write("\r\n");
+      out.write("\r\n");
+      out.write("\t<footer>\r\n");
+      out.write("\t\t<p>&copy;2017 Jon Antuñano....</p>\r\n");
+      out.write("\t</footer>\r\n");
       out.write("</body>\r\n");
       out.write("</html>");
     } catch (Throwable t) {
@@ -103,8 +128,8 @@ public final class catalogo_jsp extends org.apache.jasper.runtime.HttpJspBase
     org.apache.taglibs.standard.tag.rt.core.ForEachTag _jspx_th_c_forEach_0 = (org.apache.taglibs.standard.tag.rt.core.ForEachTag) _jspx_tagPool_c_forEach_var_items.get(org.apache.taglibs.standard.tag.rt.core.ForEachTag.class);
     _jspx_th_c_forEach_0.setPageContext(_jspx_page_context);
     _jspx_th_c_forEach_0.setParent(null);
-    _jspx_th_c_forEach_0.setItems((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${requestScope.productos}", java.lang.Object.class, (PageContext)_jspx_page_context, null));
-    _jspx_th_c_forEach_0.setVar("producto");
+    _jspx_th_c_forEach_0.setItems((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${requestScope.usuarios}", java.lang.Object.class, (PageContext)_jspx_page_context, null));
+    _jspx_th_c_forEach_0.setVar("usuario");
     int[] _jspx_push_body_count_c_forEach_0 = new int[] { 0 };
     try {
       int _jspx_eval_c_forEach_0 = _jspx_th_c_forEach_0.doStartTag();
@@ -112,26 +137,21 @@ public final class catalogo_jsp extends org.apache.jasper.runtime.HttpJspBase
         do {
           out.write("\r\n");
           out.write("\t\t\t<tr>\r\n");
-          out.write("\t\t\t\t\r\n");
+          out.write("\t\t\t\t<td>\r\n");
+          out.write("\t\t\t\t\t<a href=\"?op=modificar&id=");
+          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${usuario.nombre}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+          out.write("\">Modificar</a>\r\n");
+          out.write("\t\t\t\t\t<a href=\"?op=borrar&id=");
+          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${usuario.nombre}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+          out.write("\">Borrar</a>\r\n");
+          out.write("\t\t\t\t</td>\r\n");
           out.write("\t\t\t\t<td>");
-          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${producto.id}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${usuario.nombre}", java.lang.String.class, (PageContext)_jspx_page_context, null));
           out.write("</td>\r\n");
           out.write("\t\t\t\t<td>");
-          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${producto.nombre}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${usuario.pass}", java.lang.String.class, (PageContext)_jspx_page_context, null));
           out.write("</td>\r\n");
-          out.write("\t\t\t\t<td>");
-          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${producto.descripcion}", java.lang.String.class, (PageContext)_jspx_page_context, null));
-          out.write("</td>\r\n");
-          out.write("\t\t\t\t<td>");
-          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${producto.precio}", java.lang.String.class, (PageContext)_jspx_page_context, null));
-          out.write("</td>\r\n");
-          out.write("\t\t\t\t\r\n");
-          out.write("\t\t\t\t\r\n");
-          out.write("\t\t\t\t\r\n");
-          out.write("\t\t\t\t\r\n");
-          out.write("\t\t\t\t\r\n");
           out.write("\t\t\t</tr>\r\n");
-          out.write("\t\t\t\r\n");
           out.write("\t\t");
           int evalDoAfterBody = _jspx_th_c_forEach_0.doAfterBody();
           if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)

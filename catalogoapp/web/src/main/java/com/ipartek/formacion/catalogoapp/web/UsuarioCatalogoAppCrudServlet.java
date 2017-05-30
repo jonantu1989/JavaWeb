@@ -28,28 +28,20 @@ public class UsuarioCatalogoAppCrudServlet extends HttpServlet {
 		UsuarioDAL dal = (UsuarioDAL) application.getAttribute("dal");
 		if (dal == null) {
 			dal = DALFactory.getUsuarioDAL();
-
 			dal.alta(new Usuario("usuario1", "pass1"));
 			dal.alta(new Usuario("usuario2", "pass2"));
-
 			application.setAttribute("dal", dal);
 		}
-
 		String op = request.getParameter("op");
-
 		if (op == null) {
-
 			Usuario[] usuarios = dal.buscarTodosLosUsuarios();
-
 			request.setAttribute("usuarios", usuarios);
-
 			request.getRequestDispatcher(RUTA_LISTADO).forward(request,
 					response);
+			return;
 		} else {
 			String id = request.getParameter("id");
-
 			Usuario usuario;
-
 			switch (op) {
 			case "modificar":
 			case "borrar":
@@ -62,6 +54,7 @@ public class UsuarioCatalogoAppCrudServlet extends HttpServlet {
 			default:
 				request.getRequestDispatcher(RUTA_LISTADO).forward(request,
 						response);
+				return;
 			}
 		}
 	}

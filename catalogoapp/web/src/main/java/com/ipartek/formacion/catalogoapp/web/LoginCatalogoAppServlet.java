@@ -81,25 +81,31 @@ public class LoginCatalogoAppServlet extends HttpServlet {
 		if (quiereSalir) {
 			session.invalidate();
 			request.getRequestDispatcher(RUTA_LOGIN).forward(request, response);
+			return;
 		} else if (esUsuarioYaRegistrado) {
 			request.getRequestDispatcher(RUTA_PRINCIPAL).forward(request,
 					response);
+			return;
 		} else if (sinParametros) {
 			request.getRequestDispatcher(RUTA_LOGIN).forward(request, response);
+			return;
 		} else if (!nombreValido || !passValido) {
 			usuario.setErrores("El nombre y la pass deben tener como mínimo "
 					+ MINIMO_CARACTERES + " caracteres y son ambos requeridos");
 			request.setAttribute("usuario", usuario);
 			request.getRequestDispatcher(RUTA_LOGIN).forward(request, response);
+			return;
 		} else if (esValido) {
 			session.setAttribute("usuario", usuario);
 			// response.sendRedirect("principal.jsp");
 			request.getRequestDispatcher(RUTA_PRINCIPAL).forward(request,
 					response);
+			return;
 		} else {
 			usuario.setErrores("El usuario y contraseña introducidos no son válidos");
 			request.setAttribute("usuario", usuario);
 			request.getRequestDispatcher(RUTA_LOGIN).forward(request, response);
+			return;
 		}
 	}
 

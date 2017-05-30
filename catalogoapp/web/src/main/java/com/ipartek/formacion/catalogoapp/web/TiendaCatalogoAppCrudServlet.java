@@ -22,14 +22,12 @@ public class TiendaCatalogoAppCrudServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		doPost(request, response);
-
 	}
 
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		ServletContext application = request.getServletContext();
 		ProductosDAL dal = (ProductosDAL) application.getAttribute("dal");
-
 		if (dal == null) {
 			dal = DALFactoryProductos.getProductosDAL();
 
@@ -49,6 +47,7 @@ public class TiendaCatalogoAppCrudServlet extends HttpServlet {
 
 			request.getRequestDispatcher(RUTA_LISTADO).forward(request,
 					response);
+			return;
 
 		} else {
 
@@ -65,11 +64,13 @@ public class TiendaCatalogoAppCrudServlet extends HttpServlet {
 
 				request.getRequestDispatcher(RUTA_FORMULARIO).forward(request,
 						response);
+
 				break;
 			default:
 
 				request.getRequestDispatcher(RUTA_LISTADO).forward(request,
 						response);
+				return;
 			}
 
 		}
