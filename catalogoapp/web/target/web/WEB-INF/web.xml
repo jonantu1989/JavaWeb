@@ -4,6 +4,17 @@
 	      http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
 	      version="3.0">
   <display-name>Archetype Created Web Application</display-name>
+  <filter>
+  	<description>
+  	</description>
+  	<display-name>FiltroAutorizacion</display-name>
+  	<filter-name>FiltroAutorizacion</filter-name>
+  	<filter-class>com.ipartek.formacion.catalogoapp.web.FiltroAutorizacion</filter-class>
+  </filter>
+  <filter-mapping>
+  	<filter-name>FiltroAutorizacion</filter-name>
+  	<url-pattern>/FiltroAutorizacion</url-pattern>
+  </filter-mapping>
  
   <servlet>
   	<servlet-name>LoginCatalogoAppServlet</servlet-name>
@@ -38,7 +49,7 @@
   <servlet>
   	<description>
   	</description>
-  	<display-name>Catalogo</display-name>
+  	
   	<servlet-name>Catalogo</servlet-name>
   	<servlet-class>com.ipartek.formacion.catalogoapp.web.Catalogo</servlet-class>
   </servlet>

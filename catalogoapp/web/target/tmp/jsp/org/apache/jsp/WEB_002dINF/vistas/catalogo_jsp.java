@@ -56,6 +56,7 @@ public final class catalogo_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("<html>\r\n");
       out.write("<head>\r\n");
       out.write("<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\r\n");
+      out.write("<link rel=\"stylesheet\" href=\"css/estilos.css\" />\r\n");
       out.write("<title>Catalogo</title>\r\n");
       out.write("</head>\r\n");
       out.write("<body>\r\n");
