@@ -13,8 +13,8 @@ import com.ipartek.formacion.catalogoapp.dal.UsuarioDAL;
 import com.ipartek.formacion.catalogoapp.tipos.Usuario;
 
 public class UsuarioCatalogoAppCrudServlet extends HttpServlet {
-	static final String RUTA_FORMULARIO = "/WEB-INF/vistas/tiendaform.jsp";
-	static final String RUTA_LISTADO = "/WEB-INF/vistas/tiendacrud.jsp";
+	static final String RUTA_FORMULARIO = "/WEB-INF/vistas/usuarioform.jsp";
+	static final String RUTA_LISTADO = "/WEB-INF/vistas/usuariocrud.jsp";
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request,
@@ -26,7 +26,6 @@ public class UsuarioCatalogoAppCrudServlet extends HttpServlet {
 			HttpServletResponse response) throws ServletException, IOException {
 		ServletContext application = request.getServletContext();
 		UsuarioDAL dal = (UsuarioDAL) application.getAttribute("dal");
-
 		if (dal == null) {
 			dal = DALFactory.getUsuarioDAL();
 

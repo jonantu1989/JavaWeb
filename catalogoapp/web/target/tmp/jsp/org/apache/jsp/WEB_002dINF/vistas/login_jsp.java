@@ -49,6 +49,7 @@ public final class login_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("<title>Login</title>\r\n");
       out.write("</head>\r\n");
       out.write("<body>\r\n");
+      out.write("<h1>Login de usuarios: </h1>\r\n");
       out.write("\t<form action=\"login\" method=\"post\">\r\n");
       out.write("\t\t<fieldset> <!-- Esto es un cuadro de texto para nombre -->\r\n");
       out.write("\t\t\t<label for=\"nombre\">Nombre</label>\r\n");
