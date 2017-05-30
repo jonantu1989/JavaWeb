@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Alta</title>
+<title>Alta de usuarios</title>
 </head>
 <body>
 	<form action="alta" method="post">
@@ -21,9 +21,9 @@
 			<input type="password" id="pass2" name="pass2" />
 		</fieldset>
 		<fieldset>
-			<input type="submit" value="Alta" />
+			<input type="submit" value="alta" />
 		</fieldset>
-		<a href="login">LOGIN</a>
+	
 			
 	</form>
 </body>

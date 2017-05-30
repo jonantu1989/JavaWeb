@@ -15,7 +15,7 @@ import com.ipartek.formacion.catalogoapp.tipos.Productos;
 public class TiendaCatalogoAppCrudServlet extends HttpServlet {
 	static final String RUTA_FORMULARIO = "/WEB-INF/vistas/tiendaform.jsp";
 	static final String RUTA_LISTADO = "/WEB-INF/vistas/tiendacrud.jsp";
-	static final String RUTA_SERVLET_LISTADO = "/tiendacrud";
+	static final String RUTA_SERVLET_LISTADO = "/tienda";
 
 	private static final long serialVersionUID = 1L;
 
