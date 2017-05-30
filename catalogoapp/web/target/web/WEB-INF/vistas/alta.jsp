@@ -21,7 +21,7 @@
 			<input type="password" id="pass2" name="pass2" />
 		</fieldset>
 		<fieldset>
-			<input type="submit" value="alta" />
+			<input type="submit" value="Alta" />
 		</fieldset>
 	
 			

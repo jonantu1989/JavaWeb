@@ -80,7 +80,6 @@ public final class catalogo_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\t\t\t\t\r\n");
       out.write("\t</tbody>\r\n");
       out.write("</table>\r\n");
-      out.write("<a href=\"login\">Login</a>\r\n");
       out.write("</body>\r\n");
       out.write("</html>");
     } catch (Throwable t) {
