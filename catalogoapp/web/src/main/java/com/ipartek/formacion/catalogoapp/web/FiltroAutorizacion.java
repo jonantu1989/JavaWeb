@@ -11,7 +11,7 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebFilter;
 
-@WebFilter(dispatcherTypes = { DispatcherType.REQUEST }, urlPatterns = { "/admin" })
+@WebFilter(dispatcherTypes = { DispatcherType.REQUEST }, urlPatterns = { "admin/" })
 public class FiltroAutorizacion implements Filter {
 
 	public void doFilter(ServletRequest request, ServletResponse response,
