@@ -41,8 +41,8 @@ public class AltaCatalogoAppServlet extends HttpServlet {
 		Usuario usuario = new Usuario(nombre, pass);
 
 		boolean hayDatos = nombre != null && pass != null && pass2 != null;
-		boolean datosCorrectos = validarCampo(nombre) && validarCampo(pass)
-				&& validarCampo(pass2);
+		boolean datosCorrectos = validar(nombre) && validar(pass)
+				&& validar(pass2);
 		boolean passIguales = pass != null && pass.equals(pass2);
 
 		if (hayDatos) {
@@ -79,7 +79,7 @@ public class AltaCatalogoAppServlet extends HttpServlet {
 		return;
 	}
 
-	private boolean validarCampo(String campo) {
+	private boolean validar(String campo) {
 		return campo != null
 				&& campo.length() >= LoginCatalogoAppServlet.MINIMO_CARACTERES;
 	}
