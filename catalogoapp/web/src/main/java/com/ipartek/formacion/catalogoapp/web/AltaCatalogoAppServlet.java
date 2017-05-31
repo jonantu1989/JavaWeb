@@ -8,8 +8,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.ipartek.formacion.catalogoapp.dal.DALFactory;
 import com.ipartek.formacion.catalogoapp.dal.UsuarioDAL;
-import com.ipartek.formacion.catalogoapp.dal.UsuarioDALUsuarioUnico;
+import com.ipartek.formacion.catalogoapp.dal.UsuarioYaExistenteDALException;
 import com.ipartek.formacion.catalogoapp.tipos.Usuario;
 
 public class AltaCatalogoAppServlet extends HttpServlet {
@@ -60,15 +61,21 @@ public class AltaCatalogoAppServlet extends HttpServlet {
 						.getAttribute(USUARIOS_DAL);
 
 				if (usuariosDAL == null) {
-					usuariosDAL = new UsuarioDALUsuarioUnico();
+					usuariosDAL = DALFactory.getUsuarioDAL();
 				}
 
-				usuariosDAL.alta(usuario);
+				try {
+					usuariosDAL.alta(usuario);
+				} catch (UsuarioYaExistenteDALException de) {
+					usuario.setNombre("");
+					usuario.setErrores("El usuario ya existe. Elige otro");
+					request.setAttribute("usuario", usuario);
+				}
+
 				application.setAttribute(USUARIOS_DAL, usuariosDAL);
 			}
 		}
 		request.getRequestDispatcher(RUTA_ALTA).forward(request, response);
-		return;
 	}
 
 	private boolean validarCampo(String campo) {

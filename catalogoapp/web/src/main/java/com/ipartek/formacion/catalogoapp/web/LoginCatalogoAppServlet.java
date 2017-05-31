@@ -2,6 +2,7 @@ package com.ipartek.formacion.catalogoapp.web;
 
 import java.io.IOException;
 
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
@@ -9,20 +10,20 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.ipartek.formacion.catalogoapp.dal.DALFactory;
 import com.ipartek.formacion.catalogoapp.dal.UsuarioDAL;
-import com.ipartek.formacion.catalogoapp.dal.UsuarioDALUsuarioUnico;
 import com.ipartek.formacion.catalogoapp.tipos.Usuario;
 
 public class LoginCatalogoAppServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	public static final String RUTA = "/WEB-INF/vistas/";
+	/* package */static final String RUTA = "/WEB-INF/vistas/";
 	private static final String RUTA_PRINCIPAL = RUTA + "principal.jsp";
 	private static final String RUTA_LOGIN = RUTA + "login.jsp";
 
-	private static final int TIEMPO_INACTIVIDAD = 30 * 60;
+	public static final int TIEMPO_INACTIVIDAD = 30 * 60;
 
-	public static final int MINIMO_CARACTERES = 4;
+	/* package */static final int MINIMO_CARACTERES = 4;
 
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
@@ -38,16 +39,23 @@ public class LoginCatalogoAppServlet extends HttpServlet {
 		String opcion = request.getParameter("opcion");
 
 		// Crear modelos en base a los datos
-		Usuario usuario = new Usuario(nombre, pass);
+		Usuario usuario = new Usuario();
 		usuario.setNombre(nombre);
 		usuario.setPass(pass);
 
 		// Llamada a lógica de negocio
-		UsuarioDAL usuarioDAL = new UsuarioDALUsuarioUnico();
+		ServletContext application = request.getServletContext();
+
+		UsuarioDAL usuariosDAL = (UsuarioDAL) application
+				.getAttribute(AltaCatalogoAppServlet.USUARIOS_DAL);
+
+		if (usuariosDAL == null) {
+			usuariosDAL = DALFactory.getUsuarioDAL();
+		}
 
 		// Sólo para crear una base de datos falsa con el
-		// contenido de un usuario "jon", "antunano"
-		usuarioDAL.alta(new Usuario("jon", "antunano"));
+		// contenido de un usuario "javi", "lete"
+		// usuarioDAL.alta(new Usuario("javi", "lete"));
 
 		HttpSession session = request.getSession();
 		session.setMaxInactiveInterval(TIEMPO_INACTIVIDAD);
@@ -64,7 +72,7 @@ public class LoginCatalogoAppServlet extends HttpServlet {
 		// }
 
 		// ESTADOS
-		boolean esValido = usuarioDAL.validar(usuario);
+		boolean esValido = usuariosDAL.validar(usuario);
 
 		boolean sinParametros = usuario.getNombre() == null;
 
@@ -81,32 +89,25 @@ public class LoginCatalogoAppServlet extends HttpServlet {
 		if (quiereSalir) {
 			session.invalidate();
 			request.getRequestDispatcher(RUTA_LOGIN).forward(request, response);
-			return;
 		} else if (esUsuarioYaRegistrado) {
 			request.getRequestDispatcher(RUTA_PRINCIPAL).forward(request,
 					response);
-			return;
 		} else if (sinParametros) {
 			request.getRequestDispatcher(RUTA_LOGIN).forward(request, response);
-			return;
 		} else if (!nombreValido || !passValido) {
 			usuario.setErrores("El nombre y la pass deben tener como mínimo "
 					+ MINIMO_CARACTERES + " caracteres y son ambos requeridos");
 			request.setAttribute("usuario", usuario);
 			request.getRequestDispatcher(RUTA_LOGIN).forward(request, response);
-			return;
 		} else if (esValido) {
 			session.setAttribute("usuario", usuario);
 			// response.sendRedirect("principal.jsp");
 			request.getRequestDispatcher(RUTA_PRINCIPAL).forward(request,
 					response);
-			return;
 		} else {
 			usuario.setErrores("El usuario y contraseña introducidos no son válidos");
 			request.setAttribute("usuario", usuario);
 			request.getRequestDispatcher(RUTA_LOGIN).forward(request, response);
-			return;
 		}
 	}
-
 }
