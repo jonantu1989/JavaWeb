@@ -48,6 +48,7 @@ public class UsuarioCatalogoAppCrudServlet extends HttpServlet {
 
 			request.getRequestDispatcher(RUTA_LISTADO).forward(request,
 					response);
+			return;
 		} else {
 			String id = request.getParameter("id");
 
@@ -65,6 +66,7 @@ public class UsuarioCatalogoAppCrudServlet extends HttpServlet {
 			default:
 				request.getRequestDispatcher(RUTA_LISTADO).forward(request,
 						response);
+				return;
 			}
 		}
 	}

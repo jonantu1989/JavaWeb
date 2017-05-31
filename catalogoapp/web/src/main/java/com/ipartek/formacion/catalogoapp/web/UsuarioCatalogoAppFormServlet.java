@@ -45,8 +45,38 @@ public class UsuarioCatalogoAppFormServlet extends HttpServlet {
 		UsuarioDAL dal = (UsuarioDAL) application.getAttribute("dal");
 		switch (op) {
 		case "alta":
-			if (pass == pass2) {
+			if (pass.equals(pass2)) {
 				dal.alta(usuario);
+				request.getRequestDispatcher(
+						UsuarioCatalogoAppCrudServlet.RUTA_LISTADO).forward(
+						request, response);
+				return;
+			} else {
+				usuario.setErrores("Las contraseñas no coinciden");
+				request.setAttribute("usuario", usuario);
+				request.getRequestDispatcher(
+						UsuarioCatalogoAppCrudServlet.RUTA_FORMULARIO).forward(
+						request, response);
+
+			}
+
+			break;
+		case "modificar":
+			if (pass.equals(pass2)) {
+				try {
+					dal.modificar(usuario);
+				} catch (DALException de) {
+					usuario.setErrores(de.getMessage());
+					request.setAttribute("usuario", usuario);
+					request.getRequestDispatcher(
+							UsuarioCatalogoAppCrudServlet.RUTA_FORMULARIO)
+							.forward(request, response);
+					return;
+				}
+				request.getRequestDispatcher(
+						UsuarioCatalogoAppCrudServlet.RUTA_LISTADO).forward(
+						request, response);
+				return;
 			} else {
 				usuario.setErrores("Las contraseñas no coinciden");
 				request.setAttribute("usuario", usuario);
@@ -54,18 +84,15 @@ public class UsuarioCatalogoAppFormServlet extends HttpServlet {
 						UsuarioCatalogoAppCrudServlet.RUTA_FORMULARIO).forward(
 						request, response);
 			}
-		case "modificar":
-			if (pass == pass2) {
-				try {
-					dal.modificar(usuario);
-				} catch (DALException de) {
 
-				}
-				request.getRequestDispatcher(
-						UsuarioCatalogoAppCrudServlet.RUTA_LISTADO).forward(
-						request, response);
-			}
+			break;
+		case "borrar":
+			dal.borrar(usuario);
+			request.getRequestDispatcher(
+					UsuarioCatalogoAppCrudServlet.RUTA_LISTADO).forward(
+					request, response);
+			break;
 		}
-
 	}
+
 }
