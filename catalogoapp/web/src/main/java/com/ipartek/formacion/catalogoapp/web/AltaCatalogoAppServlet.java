@@ -76,6 +76,7 @@ public class AltaCatalogoAppServlet extends HttpServlet {
 			}
 		}
 		request.getRequestDispatcher(RUTA_ALTA).forward(request, response);
+		return;
 	}
 
 	private boolean validarCampo(String campo) {
