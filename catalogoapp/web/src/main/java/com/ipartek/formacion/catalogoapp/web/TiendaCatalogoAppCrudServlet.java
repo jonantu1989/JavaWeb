@@ -30,10 +30,8 @@ public class TiendaCatalogoAppCrudServlet extends HttpServlet {
 		ProductosDAL dal = (ProductosDAL) application.getAttribute("dal");
 		if (dal == null) {
 			dal = DALFactoryProductos.getProductosDAL();
-
 			dal.alta(new Productos("1", "nombre1", "descripcion1", 50));
 			dal.alta(new Productos("2", "nombre2", "descripcion2", 100));
-
 			application.setAttribute("dal", dal);
 		}
 

@@ -28,13 +28,10 @@ public class UsuarioCatalogoAppCrudServlet extends HttpServlet {
 			HttpServletResponse response) throws ServletException, IOException {
 		ServletContext application = request.getServletContext();
 		UsuarioDAL dal = (UsuarioDAL) application.getAttribute("dal");
-
 		if (dal == null) {
 			dal = DALFactory.getUsuarioDAL();
-
 			dal.alta(new Usuario("usuario1", "pass1"));
 			dal.alta(new Usuario("usuario2", "pass2"));
-
 			application.setAttribute("dal", dal);
 		}
 
