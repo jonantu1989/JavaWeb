@@ -15,7 +15,6 @@ import com.ipartek.formacion.catalogoapp.tipos.Usuario;
 public class UsuarioCatalogoAppCrudServlet extends HttpServlet {
 	static final String RUTA_FORMULARIO = "/WEB-INF/vistas/usuarioform.jsp";
 	static final String RUTA_LISTADO = "/WEB-INF/vistas/usuariocrud.jsp";
-	static final String RUTA_SERVLET_LISTADO = "/usuario";
 
 	private static final long serialVersionUID = 1L;
 
@@ -27,6 +26,7 @@ public class UsuarioCatalogoAppCrudServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		ServletContext application = request.getServletContext();
+
 		UsuarioDAL dal = (UsuarioDAL) application.getAttribute("dal");
 		if (dal == null) {
 			dal = DALFactory.getUsuarioDAL();
