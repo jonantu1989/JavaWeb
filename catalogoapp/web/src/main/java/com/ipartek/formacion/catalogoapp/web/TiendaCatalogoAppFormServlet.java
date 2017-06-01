@@ -11,73 +11,107 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.ipartek.formacion.catalogoapp.dal.DALException;
 import com.ipartek.formacion.catalogoapp.dal.ProductosDAL;
+import com.ipartek.formacion.catalogoapp.tipos.ProductoStockImagen;
 import com.ipartek.formacion.catalogoapp.tipos.Productos;
 
 public class TiendaCatalogoAppFormServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	protected void doGet(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException {
+	/**
+	 * 
+	 * Metodo que llama al metodo doPost();
+	 * 
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+		// Llamamos al metodo doPost.
 		doPost(request, response);
+
 	}
 
-	protected void doPost(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException {
+	/**
+	 * 
+	 * Metodo doPost().
+	 * 
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException,
+			IOException {
 
+		// La "application"
+		ServletContext applicationProductos = getServletContext();
+		ProductosDAL dalProductos = (ProductosDAL) applicationProductos.getAttribute("dalProductos");
+		// op.
 		String op = request.getParameter("opform");
-		String id = request.getParameter("id");
+
+		// Cogiendo los datos
 		String nombre = request.getParameter("nombre");
-		String descripcion = request.getParameter("decripcion");
-		int precio = request.getContentLength();
-
-		RequestDispatcher rutaListado = request
-				.getRequestDispatcher(TiendaCatalogoAppCrudServlet.RUTA_SERVLET_LISTADO);
-
-		RequestDispatcher rutaFormulario = request
-				.getRequestDispatcher(TiendaCatalogoAppCrudServlet.RUTA_FORMULARIO);
-
-		if (op == null) {
-			rutaListado.forward(request, response);
-
+		// Para sacar la id.
+		ProductoStockImagen[] productos = dalProductos.buscarTodosLosProductos(); // Solo
+																					// sirve
+																					// para
+																					// el
+																					// id.
+		// String id = request.getParameter("id");
+		String id = String.valueOf(productos.length + 1);
+		String descripcion = request.getParameter("descripcion");
+		String precio = request.getParameter("precio");
+		if (precio == null) {
+			precio = "Sin precio";
 		}
-		Productos productos = new Productos(id, nombre, descripcion, precio);
-		ServletContext application = request.getServletContext();
-		ProductosDAL dal = (ProductosDAL) application.getAttribute("dal");
-		switch (op) {
-		case "alta":
-			if (id != null) {
-				dal.alta(productos);
-				rutaListado.forward(request, response);
-				return;
-			} else {
-				productos.setErrores("Los id coinciden");
-				request.setAttribute("productos", productos);
-				rutaFormulario.forward(request, response);
-				return;
-			}
-		case "modificar":
-			if (id.equals(id)) {
-				try {
-					dal.modificar(productos);
-				} catch (DALException de) {
-					productos.setErrores(de.getMessage());
-					request.setAttribute("productos", productos);
-					rutaFormulario.forward(request, response);
-					return;
-				}
-				rutaListado.forward(request, response);
-				return;
-			} else {
-				productos.setErrores("El producto no existe");
-				request.setAttribute("productos", productos);
-				rutaFormulario.forward(request, response);
-			}
-			break;
-		case "borrar":
-			dal.borrar(productos);
-			rutaListado.forward(request, response);
+
+		String stock = request.getParameter("stock");
+		String rutaImagen = request.getParameter("rutaImagen");
+
+		// Miramos si op es null.
+		if (op == null) {
+			request.getRequestDispatcher(ConstantesGlobales.RUTA_SERVLET_LISTADO).forward(request, response);
+
 			return;
 		}
-	}
 
+		// Creamos el producto.
+
+		ProductoStockImagen producto = new ProductoStockImagen(id, nombre, descripcion, precio, stock, rutaImagen);
+
+		switch (op) {
+		case "alta":
+			try {
+				dalProductos.altaProducto(producto);
+			} catch (DALException de) {
+				producto.setErrores("El producto ya existe");
+				request.setAttribute("producto", producto);
+				request.getRequestDispatcher("?op=alta").forward(request, response);
+				return;
+
+			}
+			request.getRequestDispatcher(ConstantesGlobales.RUTA_SERVLET_LISTADO).forward(request, response);
+
+			break;
+		case "modificar":
+			try {
+				dalProductos.modificarProducto(producto);
+			} catch (DALException de) {
+				producto.setErrores(de.getMessage());
+				request.setAttribute("producto", producto);
+				request.getRequestDispatcher(ConstantesGlobales.RUTA_FORMULARIO).forward(request, response);
+				return;
+			}
+			request.getRequestDispatcher(ConstantesGlobales.RUTA_SERVLET_LISTADO).forward(request, response);
+
+			// dalProductos.modificarProducto(producto);
+			// request.getRequestDispatcher(ConstantesGlobales.RUTA_SERVLET_LISTADO).forward(request,
+			// response);
+
+			break;
+		case "borrar":
+			dalProductos.borrarProducto(producto);
+			request.getRequestDispatcher(ConstantesGlobales.RUTA_SERVLET_LISTADO).forward(request, response);
+			break;
+		}
+
+	}
 }

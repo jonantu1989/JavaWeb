@@ -10,69 +10,78 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.ipartek.formacion.catalogoapp.dal.DALFactoryProductos;
 import com.ipartek.formacion.catalogoapp.dal.ProductosDAL;
+import com.ipartek.formacion.catalogoapp.tipos.ProductoStockImagen;
 import com.ipartek.formacion.catalogoapp.tipos.Productos;
 
 public class TiendaCatalogoAppCrudServlet extends HttpServlet {
-	static final String RUTA_FORMULARIO = "/WEB-INF/vistas/tiendaform.jsp";
-	static final String RUTA_LISTADO = "/WEB-INF/vistas/tiendacrud.jsp";
-	static final String RUTA_SERVLET_LISTADO = "/tienda";
-
 	private static final long serialVersionUID = 1L;
 
-	protected void doGet(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException {
+	/**
+	 * 
+	 * LLamamos a una funcion doPost.
+	 * 
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
 		doPost(request, response);
-
 	}
 
-	protected void doPost(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException {
-		ServletContext application = request.getServletContext();
+	/**
+	 * 
+	 * Metodo doPost....
+	 * 
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException,
+			IOException {
 
-		ProductosDAL dal = (ProductosDAL) application.getAttribute("dal");
-		if (dal == null) {
-			dal = DALFactoryProductos.getProductosDAL();
-			dal.alta(new Productos("1", "nombre1", "descripcion1", 50));
-			dal.alta(new Productos("2", "nombre2", "descripcion2", 100));
-			application.setAttribute("dal", dal);
+		// Primero recogemos los datos...??
+		ServletContext applicationProductos = getServletContext();
+		ProductosDAL dalProductos = (ProductosDAL) applicationProductos.getAttribute("dalProductos");
+
+		// Las operaciones.
+		// TODO hacerlo:
+		// https://github.com/ipartek/JavaServidorTardes/blob/master/HolaMundo/src/com/ipartek/ejemplos/javierlete/controladores/UsuarioCRUDServlet.java
+
+		// Miramos que la dalProductos no este vacia.
+		if (dalProductos == null) {
+
+			dalProductos = DALFactoryProductos.getProductos();
+
+			// Creamos unos productos de prueba.
+			// dalProductos.altaProducto(new ProductoStockImagen());
+
+			applicationProductos.setAttribute("dalProductos", dalProductos);
 		}
 
+		// Creamos op.
 		String op = request.getParameter("op");
 
 		if (op == null) {
 
-			Productos[] productos = dal.buscarTodosLosProductos();
-
+			ProductoStockImagen[] productos = dalProductos.buscarTodosLosProductos();
 			request.setAttribute("productos", productos);
-
-			request.getRequestDispatcher(RUTA_LISTADO).forward(request,
-					response);
-			return;
-
+			request.getRequestDispatcher(ConstantesGlobales.RUTA_LISTADO).forward(request, response);
 		} else {
 
 			String id = request.getParameter("id");
 
-			Productos productos;
+			ProductoStockImagen producto;
 
 			switch (op) {
 			case "modificar":
 			case "borrar":
-				productos = dal.buscarTodosLosProductosPorId(id);
-				request.setAttribute("productos", productos);
+				producto = dalProductos.buscarProductoPorId(id);
+				request.setAttribute("producto", producto);
 			case "alta":
-
-				request.getRequestDispatcher(RUTA_FORMULARIO).forward(request,
-						response);
-
+				request.getRequestDispatcher(ConstantesGlobales.RUTA_FORMULARIO).forward(request, response);
 				break;
 			default:
-
-				request.getRequestDispatcher(RUTA_LISTADO).forward(request,
-						response);
-				return;
+				request.getRequestDispatcher(ConstantesGlobales.RUTA_LISTADO).forward(request, response);
 			}
-
 		}
 	}
 }

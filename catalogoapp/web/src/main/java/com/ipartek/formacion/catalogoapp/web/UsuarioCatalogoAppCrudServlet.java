@@ -10,29 +10,31 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.ipartek.formacion.catalogoapp.dal.DALFactory;
 import com.ipartek.formacion.catalogoapp.dal.UsuarioDAL;
+import com.ipartek.formacion.catalogoapp.dal.UsuarioDALFactory;
 import com.ipartek.formacion.catalogoapp.tipos.Usuario;
 
 public class UsuarioCatalogoAppCrudServlet extends HttpServlet {
 	static final String RUTA_FORMULARIO = "/WEB-INF/vistas/usuarioform.jsp";
 	static final String RUTA_LISTADO = "/WEB-INF/vistas/usuariocrud.jsp";
+	static final String RUTA_SERVLET_LISTADO = "/usuariocrud";
 
 	private static final long serialVersionUID = 1L;
 
-	protected void doGet(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doPost(request, response);
 	}
 
-	protected void doPost(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException {
-		ServletContext application = request.getServletContext();
-
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException,
+			IOException {
+		ServletContext application = getServletContext();
 		UsuarioDAL dal = (UsuarioDAL) application.getAttribute("dal");
 
 		if (dal == null) {
-			dal = DALFactory.getUsuarioDAL();
+			dal = UsuarioDALFactory.getUsuariosDAL();
+
 			dal.alta(new Usuario("usuario1", "pass1"));
 			dal.alta(new Usuario("usuario2", "pass2"));
+
 			application.setAttribute("dal", dal);
 		}
 
@@ -44,9 +46,7 @@ public class UsuarioCatalogoAppCrudServlet extends HttpServlet {
 
 			request.setAttribute("usuarios", usuarios);
 
-			request.getRequestDispatcher(RUTA_LISTADO).forward(request,
-					response);
-			return;
+			request.getRequestDispatcher(RUTA_LISTADO).forward(request, response);
 		} else {
 			String id = request.getParameter("id");
 
@@ -55,15 +55,13 @@ public class UsuarioCatalogoAppCrudServlet extends HttpServlet {
 			switch (op) {
 			case "modificar":
 			case "borrar":
-				usuario = dal.buscarPorID(id);
+				usuario = dal.buscarPorId(id);
 				request.setAttribute("usuario", usuario);
 			case "alta":
-				request.getRequestDispatcher(RUTA_FORMULARIO).forward(request,
-						response);
+				request.getRequestDispatcher(RUTA_FORMULARIO).forward(request, response);
 				break;
 			default:
-				request.getRequestDispatcher(RUTA_LISTADO).forward(request,
-						response);
+				request.getRequestDispatcher(RUTA_LISTADO).forward(request, response);
 			}
 		}
 	}
