@@ -98,7 +98,7 @@ public final class usuariocrud_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\r\n");
       out.write("\t</tbody>\r\n");
       out.write("</table>\r\n");
-      out.write("\r\n");
+      out.write("<a href=\"?op=alta\">Alta</a>\r\n");
       out.write("\r\n");
       out.write("\r\n");
       out.write("\t<footer>\r\n");

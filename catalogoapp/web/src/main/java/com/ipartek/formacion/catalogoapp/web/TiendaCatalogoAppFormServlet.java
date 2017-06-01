@@ -35,9 +35,10 @@ public class TiendaCatalogoAppFormServlet extends HttpServlet {
 
 		RequestDispatcher rutaFormulario = request
 				.getRequestDispatcher(TiendaCatalogoAppCrudServlet.RUTA_FORMULARIO);
+
 		if (op == null) {
 			rutaListado.forward(request, response);
-			return;
+
 		}
 		Productos productos = new Productos(id, nombre, descripcion, precio);
 		ServletContext application = request.getServletContext();

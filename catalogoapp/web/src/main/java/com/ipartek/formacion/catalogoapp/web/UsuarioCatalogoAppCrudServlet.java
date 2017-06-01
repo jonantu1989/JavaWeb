@@ -28,6 +28,7 @@ public class UsuarioCatalogoAppCrudServlet extends HttpServlet {
 		ServletContext application = request.getServletContext();
 
 		UsuarioDAL dal = (UsuarioDAL) application.getAttribute("dal");
+
 		if (dal == null) {
 			dal = DALFactory.getUsuarioDAL();
 			dal.alta(new Usuario("usuario1", "pass1"));
@@ -63,7 +64,6 @@ public class UsuarioCatalogoAppCrudServlet extends HttpServlet {
 			default:
 				request.getRequestDispatcher(RUTA_LISTADO).forward(request,
 						response);
-				return;
 			}
 		}
 	}
