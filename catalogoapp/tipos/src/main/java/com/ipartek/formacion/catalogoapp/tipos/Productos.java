@@ -4,24 +4,87 @@ public class Productos {
 	private String id;
 	private String nombre;
 	private String descripcion;
-	private int precio;
+	private String precio; // TODO mirar bien este tipo de dato.
+	// Vamos a meter tambien los errores.
 	private String errores;
 
-	public Productos() {
+	// Constructores.
 
+	public Productos(String id, String nombre, String descripcion, String precio) {
+		super();
+		this.id = id;
+		this.nombre = nombre;
+		this.descripcion = descripcion;
+		this.precio = precio + "�";
+	}
+
+	public Productos() {
+		super();
+		this.id = "No id";
+		this.nombre = "Producto Desconocido";
+		this.descripcion = "No hay descripcion";
+		this.precio = "0�";
+	}
+
+	// Getters y setters.
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+	public String getDescripcion() {
+		return descripcion;
+	}
+
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
+	}
+
+	public String getPrecio() {
+		return precio;
+	}
+
+	public void setPrecio(String precio) {
+		this.precio = precio + "�";
+	}
+
+	// getter y setter para los errores.
+	public String getErrores() {
+		return errores;
+	}
+
+	public void setErrores(String errores) {
+		this.errores = errores;
+	}
+
+	// Otros metodos.
+	@Override
+	public String toString() {
+		return "Producto [id=" + id + ", nombre=" + nombre + ", descripcion=" + descripcion + ", precio=" + precio
+				+ "]";
 	}
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result
-				+ ((descripcion == null) ? 0 : descripcion.hashCode());
+		result = prime * result + ((descripcion == null) ? 0 : descripcion.hashCode());
+		result = prime * result + ((errores == null) ? 0 : errores.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((nombre == null) ? 0 : nombre.hashCode());
-		long temp;
-		temp = Double.doubleToLongBits(precio);
-		result = prime * result + (int) (temp ^ (temp >>> 32));
+		result = prime * result + ((precio == null) ? 0 : precio.hashCode());
 		return result;
 	}
 
@@ -39,6 +102,11 @@ public class Productos {
 				return false;
 		} else if (!descripcion.equals(other.descripcion))
 			return false;
+		if (errores == null) {
+			if (other.errores != null)
+				return false;
+		} else if (!errores.equals(other.errores))
+			return false;
 		if (id == null) {
 			if (other.id != null)
 				return false;
@@ -49,69 +117,12 @@ public class Productos {
 				return false;
 		} else if (!nombre.equals(other.nombre))
 			return false;
-		if (Double.doubleToLongBits(precio) != Double
-				.doubleToLongBits(other.precio))
+		if (precio == null) {
+			if (other.precio != null)
+				return false;
+		} else if (!precio.equals(other.precio))
 			return false;
 		return true;
-	}
-
-	public Productos(String id, String nombre, String descripcion, int precio) {
-		super();
-		this.id = id;
-		this.nombre = nombre;
-		this.descripcion = descripcion;
-		this.precio = precio;
-	}
-
-	@Override
-	public String toString() {
-		return "Productos [id=" + id + ", nombre=" + nombre + ", descripcion="
-				+ descripcion + ", precio=" + precio + "]";
-	}
-
-	public String getId() {
-		return id;
-	}
-
-	public String getNombre() {
-		return nombre;
-	}
-
-	public String getDescripcion() {
-		return descripcion;
-	}
-
-	public int getPrecio() {
-		return precio;
-	}
-
-	public void setId(String id) {
-		this.id = id;
-	}
-
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-	}
-
-	public void setDescripcion(String descripcion) {
-		this.descripcion = descripcion;
-	}
-
-	public void setPrecio(int precio) {
-		this.precio = precio;
-	}
-
-	public String getErrores() {
-		return errores;
-	}
-
-	public void setErrores(String errores) {
-		this.errores = errores;
-	}
-
-	public boolean containsValue(Productos productos) {
-
-		return false;
 	}
 
 }

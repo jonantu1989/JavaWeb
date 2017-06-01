@@ -11,8 +11,7 @@ public class UsuarioDALColeccion implements UsuarioDAL {
 
 	public void alta(Usuario usuario) {
 		if (usuarios.containsKey(usuario.getNombre()))
-			throw new UsuarioYaExistenteDALException("Ya existe el usuario "
-					+ usuario.getNombre());
+			throw new UsuarioYaExistenteDALException("Ya existe el usuario " + usuario.getNombre());
 
 		usuarios.put(usuario.getNombre(), usuario);
 	}
@@ -23,8 +22,7 @@ public class UsuarioDALColeccion implements UsuarioDAL {
 
 	public void modificar(Usuario usuario) {
 		if (!usuarios.containsKey(usuario.getNombre()))
-			throw new DALException("Intento de modificar usuario no existente "
-					+ usuario);
+			throw new DALException("Intento de modificar usuario no existente " + usuario);
 
 		usuarios.put(usuario.getNombre(), usuario);
 	}
@@ -33,7 +31,7 @@ public class UsuarioDALColeccion implements UsuarioDAL {
 		usuarios.remove(usuario.getNombre());
 	}
 
-	public Usuario buscarPorID(String id) {
+	public Usuario buscarPorId(String id) {
 		return usuarios.get(id);
 	}
 

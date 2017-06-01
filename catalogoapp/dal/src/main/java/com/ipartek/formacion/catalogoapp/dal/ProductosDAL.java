@@ -1,19 +1,20 @@
 package com.ipartek.formacion.catalogoapp.dal;
 
-import com.ipartek.formacion.catalogoapp.tipos.Productos;
+import com.ipartek.formacion.catalogoapp.tipos.ProductoStockImagen;
+//import com.ipartek.formacion.catalogoapp.tipos.Productos;
 
 public interface ProductosDAL {
 
-	public void alta(Productos producto);
+	public void altaProducto(ProductoStockImagen producto);
 
-	public void modificar(Productos producto);
+	public void modificarProducto(ProductoStockImagen producto);
 
-	public void borrar(Productos producto);
+	public void borrarProducto(ProductoStockImagen producto);
 
-	public Productos buscarTodosLosProductosPorId(String id);
+	public ProductoStockImagen buscarProductoPorId(String id);
 
-	public Productos[] buscarTodosLosProductos();
+	public ProductoStockImagen[] buscarTodosLosProductos();
 
-	public boolean validar(Productos productos);
+	public boolean validarProducto(ProductoStockImagen producto);
 
 }

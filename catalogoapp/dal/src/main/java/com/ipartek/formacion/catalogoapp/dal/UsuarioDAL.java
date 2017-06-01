@@ -9,7 +9,7 @@ public interface UsuarioDAL {
 
 	public void borrar(Usuario usuario);
 
-	public Usuario buscarPorID(String id);
+	public Usuario buscarPorId(String id);
 
 	public Usuario[] buscarTodosLosUsuarios();
 
