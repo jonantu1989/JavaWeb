@@ -44,7 +44,7 @@ public class UsuarioCatalogoAppFormServlet extends HttpServlet {
 		UsuarioDAL dal = (UsuarioDAL) application.getAttribute("dal");
 		switch (op) {
 		case "alta":
-			if ((pass != null) == (pass2 != null)) {
+			if (pass.equals(pass2)) {
 				dal.alta(usuario);
 				request.getRequestDispatcher(
 						UsuarioCatalogoAppCrudServlet.RUTA_LISTADO).forward(
