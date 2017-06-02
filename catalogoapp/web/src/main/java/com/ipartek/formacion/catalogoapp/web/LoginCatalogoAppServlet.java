@@ -55,8 +55,8 @@ public class LoginCatalogoAppServlet extends HttpServlet {
 		}
 
 		// Sólo para crear una base de datos falsa con el
-		// contenido de un usuario "javi", "lete"
-		// usuarioDAL.alta(new Usuario("javi", "lete"));
+		// contenido de un usuario "jon", "antunano"
+		// usuarioDAL.alta(new Usuario("jon", "antunano"));
 
 		HttpSession session = request.getSession();
 		session.setMaxInactiveInterval(TIEMPO_INACTIVIDAD);
