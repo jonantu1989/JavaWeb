@@ -35,14 +35,10 @@
   	
   	<servlet-class>com.ipartek.formacion.catalogoapp.web.TiendaCatalogoAppFormServlet</servlet-class>
   </servlet>
-  <servlet>
+ 
   	<description>
-  	</description>
   	
-  	<servlet-name>Catalogo</servlet-name>
-  	<servlet-class>com.ipartek.formacion.catalogoapp.web.Catalogo</servlet-class>
-  </servlet>
-
+  	</description>
   <servlet-mapping>
   	<servlet-name>LoginCatalogoAppServlet</servlet-name>
   	<url-pattern>/login</url-pattern>
@@ -67,8 +63,5 @@
   	<servlet-name>TiendaCatalogoAppFormServlet</servlet-name>
   	<url-pattern>/tiendaform</url-pattern>
   </servlet-mapping>
-  <servlet-mapping>
-  	<servlet-name>Catalogo</servlet-name>
-  	<url-pattern>/catalogo</url-pattern>
-  </servlet-mapping>
+
 </web-app>

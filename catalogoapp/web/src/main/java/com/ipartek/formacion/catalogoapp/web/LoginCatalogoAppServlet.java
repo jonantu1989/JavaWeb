@@ -18,26 +18,21 @@ public class LoginCatalogoAppServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/* package */static final String RUTA = "/WEB-INF/vistas/";
-	private static final String RUTA_PRINCIPAL = RUTA + "productocrud.jsp";
+	private static final String RUTA_PRINCIPAL = RUTA + "tiendaform.jsp";
 	private static final String RUTA_LOGIN = RUTA + "login.jsp";
 
 	public static final int TIEMPO_INACTIVIDAD = 30 * 60;
 
 	/* package */static final int MINIMO_CARACTERES = 4;
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
 		doPost(request, response);
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException,
-			IOException {
-		
-	
+	protected void doPost(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
 
-		
-		
-		
-		
 		// Recoger datos de vistas
 		String nombre = request.getParameter("nombre");
 		String pass = request.getParameter("pass");
@@ -52,7 +47,8 @@ public class LoginCatalogoAppServlet extends HttpServlet {
 		// Llamada a lógica de negocio
 		ServletContext application = getServletContext();
 
-		UsuarioDAL usuariosDAL = (UsuarioDAL) application.getAttribute(AltaCatalogoAppServlet.USUARIOS_DAL);
+		UsuarioDAL usuariosDAL = (UsuarioDAL) application
+				.getAttribute(AltaCatalogoAppServlet.USUARIOS_DAL);
 
 		if (usuariosDAL == null) {
 			usuariosDAL = UsuarioDALFactory.getUsuariosDAL();
@@ -85,26 +81,30 @@ public class LoginCatalogoAppServlet extends HttpServlet {
 
 		boolean quiereSalir = "logout".equals(opcion);
 
-		boolean nombreValido = usuario.getNombre() != null && usuario.getNombre().length() >= MINIMO_CARACTERES;
-		boolean passValido = !(usuario.getPass() == null || usuario.getPass().length() < MINIMO_CARACTERES);
+		boolean nombreValido = usuario.getNombre() != null
+				&& usuario.getNombre().length() >= MINIMO_CARACTERES;
+		boolean passValido = !(usuario.getPass() == null || usuario.getPass()
+				.length() < MINIMO_CARACTERES);
 
 		// Redirigir a una nueva vista
 		if (quiereSalir) {
 			session.invalidate();
 			request.getRequestDispatcher(RUTA_LOGIN).forward(request, response);
 		} else if (esUsuarioYaRegistrado) {
-			request.getRequestDispatcher(RUTA_PRINCIPAL).forward(request, response);
+			request.getRequestDispatcher(RUTA_PRINCIPAL).forward(request,
+					response);
 		} else if (sinParametros) {
 			request.getRequestDispatcher(RUTA_LOGIN).forward(request, response);
 		} else if (!nombreValido || !passValido) {
-			usuario.setErrores("El nombre y la pass deben tener como mínimo " + MINIMO_CARACTERES
-					+ " caracteres y son ambos requeridos");
+			usuario.setErrores("El nombre y la pass deben tener como mínimo "
+					+ MINIMO_CARACTERES + " caracteres y son ambos requeridos");
 			request.setAttribute("usuario", usuario);
 			request.getRequestDispatcher(RUTA_LOGIN).forward(request, response);
 		} else if (esValido) {
 			session.setAttribute("usuario", usuario);
 			// response.sendRedirect("principal.jsp");
-			request.getRequestDispatcher(RUTA_PRINCIPAL).forward(request, response);
+			request.getRequestDispatcher(RUTA_PRINCIPAL).forward(request,
+					response);
 		} else {
 			usuario.setErrores("El usuario y contraseña introducidos no son válidos");
 			request.setAttribute("usuario", usuario);
