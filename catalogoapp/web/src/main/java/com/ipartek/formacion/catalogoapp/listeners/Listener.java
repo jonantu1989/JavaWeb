@@ -10,10 +10,6 @@ import javax.servlet.http.HttpSessionActivationListener;
 import javax.servlet.http.HttpSessionEvent;
 import javax.servlet.http.HttpSessionListener;
 
-/**
- * Application Lifecycle Listener implementation class Listener
- *
- */
 public class Listener implements ServletContextListener, HttpSessionListener,
 		HttpSessionActivationListener, ServletRequestListener {
 
