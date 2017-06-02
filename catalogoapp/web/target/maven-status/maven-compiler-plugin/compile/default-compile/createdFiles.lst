@@ -1,0 +1,8 @@
+com\ipartek\formacion\catalogoapp\web\TiendaCatalogoAppFormServlet.class
+com\ipartek\formacion\catalogoapp\filtros\Filtro.class
+com\ipartek\formacion\catalogoapp\web\UsuarioCatalogoAppCrudServlet.class
+com\ipartek\formacion\catalogoapp\web\AltaCatalogoAppServlet.class
+com\ipartek\formacion\catalogoapp\web\TiendaCatalogoAppCrudServlet.class
+com\ipartek\formacion\catalogoapp\web\LoginCatalogoAppServlet.class
+com\ipartek\formacion\catalogoapp\rutas\Rutas.class
+com\ipartek\formacion\catalogoapp\web\UsuarioCatalogoAppFormServlet.class

@@ -4,13 +4,7 @@
 	      http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
 	      version="3.0">
   <display-name>Archetype Created Web Application</display-name>
-  <filter>
-  	<description>
-  	</description>
-  	<display-name>FiltroAutorizacion</display-name>
-  	<filter-name>FiltroAutorizacion</filter-name>
-  	<filter-class>com.ipartek.formacion.catalogoapp.web.FiltroAutorizacion</filter-class>
-  </filter>
+ 
   <filter>
   	<description>
   	</description>
@@ -18,11 +12,7 @@
   	<filter-name>Filtro</filter-name>
   	<filter-class>com.ipartek.formacion.catalogoapp.filtros.Filtro</filter-class>
   </filter>
-  <filter-mapping>
-  	<filter-name>FiltroAutorizacion</filter-name>
-  	<url-pattern>/FiltroAutorizacion</url-pattern>
-  </filter-mapping>
-  <filter-mapping>
+
   	<filter-name>Filtro</filter-name>
   	<url-pattern>/filtro</url-pattern>
   	<dispatcher>REQUEST</dispatcher>

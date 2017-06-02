@@ -1,0 +1,10 @@
+com\ipartek\formacion\catalogoapp\dal\UsuarioYaExistenteDALException.class
+com\ipartek\formacion\catalogoapp\dal\ProductosDAL.class
+com\ipartek\formacion\catalogoapp\dal\DALException.class
+com\ipartek\formacion\catalogoapp\dal\ProductosDALColeccion.class
+com\ipartek\formacion\catalogoapp\dal\ProductoYaExistenteDALException.class
+com\ipartek\formacion\catalogoapp\dal\UsuarioDAL.class
+com\ipartek\formacion\catalogoapp\dal\UsuarioDALColeccion.class
+com\ipartek\formacion\catalogoapp\dal\DALFactory.class
+com\ipartek\formacion\catalogoapp\dal\DALFactoryProductos.class
+com\ipartek\formacion\catalogoapp\dal\UsuarioDALFactory.class
