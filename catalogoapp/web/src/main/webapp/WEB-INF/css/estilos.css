@@ -56,3 +56,13 @@ header, footer {
 fieldset {
 	border: 0;
 }
+
+h1 {
+	background-color: green;
+}
+
+thead {
+	text-align: center;
+	background-color: red;
+}
+

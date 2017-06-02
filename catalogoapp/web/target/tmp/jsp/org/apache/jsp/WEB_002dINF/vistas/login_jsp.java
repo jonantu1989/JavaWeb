@@ -11,6 +11,12 @@ public final class login_jsp extends org.apache.jasper.runtime.HttpJspBase
 
   private static java.util.List<String> _jspx_dependants;
 
+  static {
+    _jspx_dependants = new java.util.ArrayList<String>(2);
+    _jspx_dependants.add("/WEB-INF/vistas/includes/cabecera.jsp");
+    _jspx_dependants.add("/WEB-INF/vistas/includes/pie.jsp");
+  }
+
   private org.glassfish.jsp.api.ResourceInjector _jspx_resourceInjector;
 
   public java.util.List<String> getDependants() {
@@ -42,13 +48,27 @@ public final class login_jsp extends org.apache.jasper.runtime.HttpJspBase
       _jspx_resourceInjector = (org.glassfish.jsp.api.ResourceInjector) application.getAttribute("com.sun.appserv.jsp.resource.injector");
 
       out.write("\r\n");
-      out.write("<!DOCTYPE html PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\" \"http://www.w3.org/TR/html4/loose.dtd\">\r\n");
+      out.write("<!DOCTYPE html>\r\n");
       out.write("<html>\r\n");
       out.write("<head>\r\n");
-      out.write("<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\r\n");
-      out.write("<title>Login</title>\r\n");
+      out.write("<meta charset=\"UTF-8\" />\r\n");
+      out.write("<title>Ejemplo MVC</title>\r\n");
+      out.write("<link rel=\"stylesheet\" href=\"css/estilos.css\" />\r\n");
       out.write("</head>\r\n");
       out.write("<body>\r\n");
+      out.write("\t<header>\r\n");
+      out.write("\t\t<h1>TIENDA</h1>\r\n");
+      out.write("\t\t<p>Tienda</p>\r\n");
+      out.write("\t</header>\r\n");
+      out.write("\t<nav>\r\n");
+      out.write("\t\t<ul>\r\n");
+      out.write("\t\t\t<li><a href=\"login\">Login</a></li>\r\n");
+      out.write("\t\t\t<li><a href=\"alta\">Alta</a></li>\r\n");
+      out.write("\t\t\t<li><a href=\"login?opcion=logout\">Salir</a></li>\r\n");
+      out.write("\t\t</ul>\r\n");
+      out.write("\t</nav>");
+      out.write("\r\n");
+      out.write("\r\n");
       out.write("<h1>Login de usuarios: </h1>\r\n");
       out.write("\t<form action=\"login\" method=\"post\">\r\n");
       out.write("\t\t<fieldset> <!-- Esto es un cuadro de texto para nombre -->\r\n");
@@ -67,6 +87,10 @@ public final class login_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\t\t\r\n");
       out.write("\t\t\t\r\n");
       out.write("\t</form>\r\n");
+      out.write("\r\n");
+      out.write("\t<footer>\r\n");
+      out.write("\t\t<p>&copy;2017 Jon Antuñano....</p>\r\n");
+      out.write("\t</footer>\r\n");
       out.write("</body>\r\n");
       out.write("</html>");
     } catch (Throwable t) {

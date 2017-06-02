@@ -4,6 +4,21 @@
 	      http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
 	      version="3.0">
   <display-name>Archetype Created Web Application</display-name>
+  <filter>
+  	<description>
+  	</description>
+  	<display-name>Filtro</display-name>
+  	<filter-name>Filtro</filter-name>
+  	<filter-class>com.ipartek.formacion.catalogoapp.filtros.Filtro</filter-class>
+  </filter>
+  <filter-mapping>
+  	<filter-name>Filtro</filter-name>
+  	<url-pattern>/filtro</url-pattern>
+  	<dispatcher>REQUEST</dispatcher>
+  	<dispatcher>FORWARD</dispatcher>
+  	
+  </filter-mapping>
+  
  
   <servlet>
   	<servlet-name>LoginCatalogoAppServlet</servlet-name>
