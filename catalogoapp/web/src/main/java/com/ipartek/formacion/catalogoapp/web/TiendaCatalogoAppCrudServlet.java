@@ -10,8 +10,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.ipartek.formacion.catalogoapp.dal.DALFactoryProductos;
 import com.ipartek.formacion.catalogoapp.dal.ProductosDAL;
+import com.ipartek.formacion.catalogoapp.rutas.Rutas;
 import com.ipartek.formacion.catalogoapp.tipos.ProductoStockImagen;
-import com.ipartek.formacion.catalogoapp.tipos.Productos;
 
 public class TiendaCatalogoAppCrudServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -49,7 +49,7 @@ public class TiendaCatalogoAppCrudServlet extends HttpServlet {
 		// Miramos que la dalProductos no este vacia.
 		if (dalProductos == null) {
 
-			dalProductos = DALFactoryProductos.getProductos();
+			dalProductos = DALFactoryProductos.getProductosDAL();
 
 			// Creamos unos productos de prueba.
 			// dalProductos.altaProducto(new ProductoStockImagen());
@@ -64,7 +64,7 @@ public class TiendaCatalogoAppCrudServlet extends HttpServlet {
 
 			ProductoStockImagen[] productos = dalProductos.buscarTodosLosProductos();
 			request.setAttribute("productos", productos);
-			request.getRequestDispatcher(ConstantesGlobales.RUTA_LISTADO).forward(request, response);
+			request.getRequestDispatcher(Rutas.RUTA_LISTADO).forward(request, response);
 		} else {
 
 			String id = request.getParameter("id");
@@ -77,10 +77,10 @@ public class TiendaCatalogoAppCrudServlet extends HttpServlet {
 				producto = dalProductos.buscarProductoPorId(id);
 				request.setAttribute("producto", producto);
 			case "alta":
-				request.getRequestDispatcher(ConstantesGlobales.RUTA_FORMULARIO).forward(request, response);
+				request.getRequestDispatcher(Rutas.RUTA_FORMULARIO).forward(request, response);
 				break;
 			default:
-				request.getRequestDispatcher(ConstantesGlobales.RUTA_LISTADO).forward(request, response);
+				request.getRequestDispatcher(Rutas.RUTA_LISTADO).forward(request, response);
 			}
 		}
 	}

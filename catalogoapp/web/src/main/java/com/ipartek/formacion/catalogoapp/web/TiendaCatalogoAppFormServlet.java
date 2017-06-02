@@ -2,7 +2,6 @@ package com.ipartek.formacion.catalogoapp.web;
 
 import java.io.IOException;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -11,8 +10,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.ipartek.formacion.catalogoapp.dal.DALException;
 import com.ipartek.formacion.catalogoapp.dal.ProductosDAL;
+import com.ipartek.formacion.catalogoapp.rutas.Rutas;
 import com.ipartek.formacion.catalogoapp.tipos.ProductoStockImagen;
-import com.ipartek.formacion.catalogoapp.tipos.Productos;
 
 public class TiendaCatalogoAppFormServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -68,7 +67,7 @@ public class TiendaCatalogoAppFormServlet extends HttpServlet {
 
 		// Miramos si op es null.
 		if (op == null) {
-			request.getRequestDispatcher(ConstantesGlobales.RUTA_SERVLET_LISTADO).forward(request, response);
+			request.getRequestDispatcher(Rutas.RUTA_SERVLET_LISTADO).forward(request, response);
 
 			return;
 		}
@@ -88,7 +87,7 @@ public class TiendaCatalogoAppFormServlet extends HttpServlet {
 				return;
 
 			}
-			request.getRequestDispatcher(ConstantesGlobales.RUTA_SERVLET_LISTADO).forward(request, response);
+			request.getRequestDispatcher(Rutas.RUTA_SERVLET_LISTADO).forward(request, response);
 
 			break;
 		case "modificar":
@@ -97,10 +96,10 @@ public class TiendaCatalogoAppFormServlet extends HttpServlet {
 			} catch (DALException de) {
 				producto.setErrores(de.getMessage());
 				request.setAttribute("producto", producto);
-				request.getRequestDispatcher(ConstantesGlobales.RUTA_FORMULARIO).forward(request, response);
+				request.getRequestDispatcher(Rutas.RUTA_FORMULARIO).forward(request, response);
 				return;
 			}
-			request.getRequestDispatcher(ConstantesGlobales.RUTA_SERVLET_LISTADO).forward(request, response);
+			request.getRequestDispatcher(Rutas.RUTA_SERVLET_LISTADO).forward(request, response);
 
 			// dalProductos.modificarProducto(producto);
 			// request.getRequestDispatcher(ConstantesGlobales.RUTA_SERVLET_LISTADO).forward(request,
@@ -109,7 +108,7 @@ public class TiendaCatalogoAppFormServlet extends HttpServlet {
 			break;
 		case "borrar":
 			dalProductos.borrarProducto(producto);
-			request.getRequestDispatcher(ConstantesGlobales.RUTA_SERVLET_LISTADO).forward(request, response);
+			request.getRequestDispatcher(Rutas.RUTA_SERVLET_LISTADO).forward(request, response);
 			break;
 		}
 

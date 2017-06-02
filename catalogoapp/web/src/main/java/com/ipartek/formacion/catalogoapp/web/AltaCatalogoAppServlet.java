@@ -8,8 +8,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.ipartek.formacion.catalogoapp.dal.DALFactory;
 import com.ipartek.formacion.catalogoapp.dal.UsuarioDAL;
+import com.ipartek.formacion.catalogoapp.dal.UsuarioDALFactory;
 import com.ipartek.formacion.catalogoapp.dal.UsuarioYaExistenteDALException;
 import com.ipartek.formacion.catalogoapp.tipos.Usuario;
 
@@ -18,7 +18,7 @@ public class AltaCatalogoAppServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 
-	/* package */static final String RUTA_ALTA = LoginServlet.RUTA + "alta.jsp";
+	/* package */static final String RUTA_ALTA = LoginCatalogoAppServlet.RUTA + "alta.jsp";
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doPost(request, response);
@@ -45,7 +45,7 @@ public class AltaCatalogoAppServlet extends HttpServlet {
 		if (hayDatos) {
 			if (!datosCorrectos) {
 				usuario.setErrores("Todos los campos son requeridos y con un mínimo de "
-						+ LoginServlet.MINIMO_CARACTERES + " caracteres");
+						+ LoginCatalogoAppServlet.MINIMO_CARACTERES + " caracteres");
 				request.setAttribute("usuario", usuario);
 			} else if (!passIguales) {
 				usuario.setErrores("Las contraseñas deben ser iguales");
@@ -53,7 +53,7 @@ public class AltaCatalogoAppServlet extends HttpServlet {
 			} else {
 				ServletContext application = getServletContext();
 
-				UsuariosDAL usuariosDAL = (UsuariosDAL) application.getAttribute(USUARIOS_DAL);
+				UsuarioDAL usuariosDAL = (UsuarioDAL) application.getAttribute(USUARIOS_DAL);
 
 				if (usuariosDAL == null) {
 					usuariosDAL = UsuarioDALFactory.getUsuariosDAL();
@@ -74,7 +74,7 @@ public class AltaCatalogoAppServlet extends HttpServlet {
 	}
 
 	private boolean validarCampo(String campo) {
-		return campo != null && campo.length() >= LoginServlet.MINIMO_CARACTERES;
+		return campo != null && campo.length() >= LoginCatalogoAppServlet.MINIMO_CARACTERES;
 	}
 
 }

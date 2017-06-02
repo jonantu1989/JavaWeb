@@ -8,7 +8,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.ipartek.formacion.catalogoapp.dal.DALFactory;
 import com.ipartek.formacion.catalogoapp.dal.UsuarioDAL;
 import com.ipartek.formacion.catalogoapp.dal.UsuarioDALFactory;
 import com.ipartek.formacion.catalogoapp.tipos.Usuario;

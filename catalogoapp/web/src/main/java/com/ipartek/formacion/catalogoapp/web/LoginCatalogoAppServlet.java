@@ -10,8 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.ipartek.formacion.catalogoapp.dal.DALFactory;
 import com.ipartek.formacion.catalogoapp.dal.UsuarioDAL;
+import com.ipartek.formacion.catalogoapp.dal.UsuarioDALFactory;
 import com.ipartek.formacion.catalogoapp.tipos.Usuario;
 
 public class LoginCatalogoAppServlet extends HttpServlet {
@@ -52,7 +52,7 @@ public class LoginCatalogoAppServlet extends HttpServlet {
 		// Llamada a lógica de negocio
 		ServletContext application = getServletContext();
 
-		UsuariosDAL usuariosDAL = (UsuariosDAL) application.getAttribute(AltaServlet.USUARIOS_DAL);
+		UsuarioDAL usuariosDAL = (UsuarioDAL) application.getAttribute(AltaCatalogoAppServlet.USUARIOS_DAL);
 
 		if (usuariosDAL == null) {
 			usuariosDAL = UsuarioDALFactory.getUsuariosDAL();
