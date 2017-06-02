@@ -11,9 +11,24 @@
   	<filter-name>FiltroAutorizacion</filter-name>
   	<filter-class>com.ipartek.formacion.catalogoapp.web.FiltroAutorizacion</filter-class>
   </filter>
+  <filter>
+  	<description>
+  	</description>
+  	<display-name>Filtro</display-name>
+  	<filter-name>Filtro</filter-name>
+  	<filter-class>com.ipartek.formacion.catalogoapp.filtros.Filtro</filter-class>
+  </filter>
   <filter-mapping>
   	<filter-name>FiltroAutorizacion</filter-name>
   	<url-pattern>/FiltroAutorizacion</url-pattern>
+  </filter-mapping>
+  <filter-mapping>
+  	<filter-name>Filtro</filter-name>
+  	<url-pattern>/filtro</url-pattern>
+  	<dispatcher>REQUEST</dispatcher>
+  	<dispatcher>FORWARD</dispatcher>
+  	<dispatcher>INCLUDE</dispatcher>
+  	<dispatcher>ERROR</dispatcher>
   </filter-mapping>
  
   <servlet>
