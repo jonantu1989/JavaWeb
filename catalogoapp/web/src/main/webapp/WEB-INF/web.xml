@@ -39,9 +39,7 @@
   	<description>
   	</description>
   	
-  	<servlet-name>Catalogo</servlet-name>
-  	<servlet-class>com.ipartek.formacion.catalogoapp.web.Catalogo</servlet-class>
-  </servlet>
+ 
 
   <servlet-mapping>
   	<servlet-name>LoginCatalogoAppServlet</servlet-name>
@@ -67,8 +65,5 @@
   	<servlet-name>TiendaCatalogoAppFormServlet</servlet-name>
   	<url-pattern>/tiendaform</url-pattern>
   </servlet-mapping>
-  <servlet-mapping>
-  	<servlet-name>Catalogo</servlet-name>
-  	<url-pattern>/catalogo</url-pattern>
-  </servlet-mapping>
+
 </web-app>
