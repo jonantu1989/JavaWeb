@@ -18,6 +18,12 @@
   	<dispatcher>FORWARD</dispatcher>
   	
   </filter-mapping>
+  <listener>
+  	<listener-class>com.ipartek.formacion.catalogoapp.listeners.Listener</listener-class>
+  </listener>
+  <listener>
+  	<listener-class>com.ipartek.formacion.catalogoapp.listeners.Listener</listener-class>
+  </listener>
   
  
   <servlet>
