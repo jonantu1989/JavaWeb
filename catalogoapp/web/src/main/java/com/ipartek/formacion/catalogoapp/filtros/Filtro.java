@@ -13,11 +13,8 @@ import javax.servlet.http.HttpServletResponse;
 
 public class Filtro implements Filter {
 
-	private FilterConfig fConfig;
-
-	@Override
-	public void init(FilterConfig filterConfig) throws ServletException {
-		this.fConfig = fConfig;
+	public void init(FilterConfig filterConfig, FilterConfig fConfig)
+			throws ServletException {
 
 	}
 
@@ -47,6 +44,12 @@ public class Filtro implements Filter {
 
 	@Override
 	public void destroy() {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void init(FilterConfig filterConfig) throws ServletException {
 		// TODO Auto-generated method stub
 
 	}

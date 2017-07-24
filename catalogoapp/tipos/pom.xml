@@ -4,7 +4,7 @@
   <modelVersion>4.0.0</modelVersion>
   <parent>
     <groupId>com.ipartek.formacion</groupId>
-    <artifactId>catalogoapp</artifactId>
+    <artifactId>catalogoapp</artifactId> 
     <version>1.0</version>
   </parent>
 
